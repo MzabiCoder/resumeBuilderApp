@@ -1,0 +1,149 @@
+/*
+ * HireReady design tokens — the single source of truth for colour, type, space, radius,
+ * shadow and motion. Components never use raw hex values; they use Tailwind utilities
+ * mapped to these variables in globals.css (`bg-surface`, `text-ink-muted`, …).
+ *
+ * Every text/background pair is AA-checked in src/lib/contrast.test.ts — if you edit a
+ * colour here, run `npm test` and the suite will tell you if a pair fails.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces — warm "paper" rather than flat white, so white resume previews pop. */
+  --surface: #faf8f4;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1ede5;
+  --surface-inverse: #141726;
+
+  /* Ink */
+  --ink: #141726;
+  --ink-muted: #4a5068;
+  --ink-inverse: #faf8f4;
+
+  /* Brand */
+  --primary: #2f3bc9; /* ultramarine */
+  --primary-hover: #2430a8;
+  --primary-soft: #e8eafd;
+  --on-primary: #ffffff;
+
+  --accent: #e2572b; /* warm vermilion — decorative fills, large display text */
+  --accent-strong: #b23c15; /* accent when used as body-size text */
+  --accent-soft: #fde8df;
+  --on-accent: #141726;
+
+  /* Status */
+  --success: #1c7346;
+  --success-soft: #dff3e8;
+  --warning: #8f5400;
+  --warning-soft: #fdf0d9;
+  --danger: #be2329;
+  --danger-soft: #fde3e4;
+
+  /* Lines */
+  --border: #e3ddd1; /* decorative separators only */
+  --border-strong: #827c6d; /* input & control outlines (≥3:1, WCAG 1.4.11) */
+  --focus-ring: #2f3bc9;
+
+  /* Shape */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* Elevation — ink-tinted, layered for softness */
+  --shadow-sm: 0 1px 2px rgb(20 23 38 / 0.06), 0 1px 1px rgb(20 23 38 / 0.04);
+  --shadow-md: 0 4px 12px -2px rgb(20 23 38 / 0.08), 0 2px 4px rgb(20 23 38 / 0.05);
+  --shadow-lg: 0 24px 48px -12px rgb(20 23 38 / 0.18), 0 8px 16px -8px rgb(20 23 38 / 0.08);
+  --shadow-paper: 0 1px 0 rgb(20 23 38 / 0.04), 0 30px 60px -20px rgb(47 59 201 / 0.25);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 420ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --header-height: 4rem;
+  --container-max: 76rem;
+}
+
+/* Dark chrome. Explicit [data-theme] wins; otherwise follow the OS. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #0f1120;
+    --surface-raised: #181b30;
+    --surface-sunken: #0a0c17;
+    --surface-inverse: #faf8f4;
+    --ink: #f2f0eb;
+    --ink-muted: #a9aec6;
+    --ink-inverse: #141726;
+    --primary: #8f98ff;
+    --primary-hover: #b0b6ff;
+    --primary-soft: #23285a;
+    --on-primary: #0f1120;
+    --accent: #ff8a5c;
+    --accent-strong: #ff9a72;
+    --accent-soft: #3a2018;
+    --on-accent: #0f1120;
+    --success: #4fd897;
+    --success-soft: #12301f;
+    --warning: #f5b544;
+    --warning-soft: #33260c;
+    --danger: #ff7c80;
+    --danger-soft: #3a1416;
+    --border: #2a2f4a;
+    --border-strong: #6f7598;
+    --focus-ring: #b0b6ff;
+    --shadow-paper: 0 1px 0 rgb(0 0 0 / 0.2), 0 30px 60px -20px rgb(0 0 0 / 0.6);
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #0f1120;
+  --surface-raised: #181b30;
+  --surface-sunken: #0a0c17;
+  --surface-inverse: #faf8f4;
+  --ink: #f2f0eb;
+  --ink-muted: #a9aec6;
+  --ink-inverse: #141726;
+  --primary: #8f98ff;
+  --primary-hover: #b0b6ff;
+  --primary-soft: #23285a;
+  --on-primary: #0f1120;
+  --accent: #ff8a5c;
+  --accent-strong: #ff9a72;
+  --accent-soft: #3a2018;
+  --on-accent: #0f1120;
+  --success: #4fd897;
+  --success-soft: #12301f;
+  --warning: #f5b544;
+  --warning-soft: #33260c;
+  --danger: #ff7c80;
+  --danger-soft: #3a1416;
+  --border: #2a2f4a;
+  --border-strong: #6f7598;
+  --focus-ring: #b0b6ff;
+  --shadow-paper: 0 1px 0 rgb(0 0 0 / 0.2), 0 30px 60px -20px rgb(0 0 0 / 0.6);
+}
+
+/* Resume previews always render on white, regardless of site theme. */
+.resume-paper {
+  color-scheme: light;
+  --ink: #141726;
+  --ink-muted: #4a5068;
+  background: #ffffff;
+  color: #141726;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
