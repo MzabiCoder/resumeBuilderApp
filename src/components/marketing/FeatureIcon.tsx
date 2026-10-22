@@ -18,7 +18,10 @@ const tones = {
 export function FeatureIcon({ icon, tone = "primary", className }: FeatureIconProps) {
   const Glyph = iconMap[icon];
   return (
-    <span aria-hidden="true" className={cn("grid size-12 shrink-0 place-items-center rounded-lg", tones[tone], className)}>
+    <span
+      aria-hidden="true"
+      className={cn("grid size-12 shrink-0 place-items-center rounded-lg", tones[tone], className)}
+    >
       <Glyph className="size-6" strokeWidth={1.8} />
     </span>
   );

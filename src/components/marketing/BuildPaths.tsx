@@ -29,9 +29,15 @@ export function BuildPaths({ eyebrow, title, intro, paths }: BuildPathsProps) {
                 primary ? "bg-primary text-on-primary" : "border border-border bg-surface-raised",
               )}
             >
-              <FeatureIcon icon={path.icon} tone={primary ? "inverse" : "accent"} className={primary ? "bg-on-primary/15 text-on-primary" : ""} />
+              <FeatureIcon
+                icon={path.icon}
+                tone={primary ? "inverse" : "accent"}
+                className={primary ? "bg-on-primary/15 text-on-primary" : ""}
+              />
               <h3 className="text-display-sm font-semibold">{path.title}</h3>
-              <p className={cn("text-lead", primary ? "opacity-90" : "text-ink-muted")}>{path.body}</p>
+              <p className={cn("text-lead", primary ? "opacity-90" : "text-ink-muted")}>
+                {path.body}
+              </p>
               <ButtonLink
                 href={path.cta.href}
                 variant={primary ? "accent" : "outline"}

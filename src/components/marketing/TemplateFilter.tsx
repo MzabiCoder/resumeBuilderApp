@@ -27,7 +27,8 @@ export function TemplateFilter({
 
   function apply(value: string) {
     setActive(value);
-    const items = document.getElementById(listId)?.querySelectorAll<HTMLElement>("[data-tags]") ?? [];
+    const items =
+      document.getElementById(listId)?.querySelectorAll<HTMLElement>("[data-tags]") ?? [];
     let shown = 0;
     items.forEach((item) => {
       const match = value === "all" || (item.dataset.tags ?? "").split(" ").includes(value);
@@ -51,7 +52,9 @@ export function TemplateFilter({
               onClick={() => apply(f.value)}
               className={cn(
                 "min-h-11 rounded-full border-2 px-4 text-sm font-semibold transition-colors",
-                pressed ? "border-ink bg-ink text-ink-inverse" : "border-border-strong text-ink hover:border-ink",
+                pressed
+                  ? "border-ink bg-ink text-ink-inverse"
+                  : "border-border-strong text-ink hover:border-ink",
               )}
             >
               {f.label}

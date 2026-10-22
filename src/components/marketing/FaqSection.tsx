@@ -13,13 +13,19 @@ export interface FaqSectionProps extends SectionHeader {
 
 /** #faq — native disclosure accordion (zero JS) + FAQPage JSON-LD from the same content. */
 export function FaqSection({ id = "faq", eyebrow, title, intro, items }: FaqSectionProps) {
-  const jsonLd = faqJsonLd(items.map((i) => ({ question: i.question, answer: i.answer.map(toPlainText).join(" ") })));
+  const jsonLd = faqJsonLd(
+    items.map((i) => ({ question: i.question, answer: i.answer.map(toPlainText).join(" ") })),
+  );
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="py-16 sm:py-24">
       <JsonLd data={jsonLd} />
       <Container className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-16">
         <header className="flex flex-col gap-4 lg:sticky lg:top-[calc(var(--header-height)+2rem)] lg:self-start">
-          {eyebrow ? <p className="text-sm font-semibold tracking-[0.14em] text-accent-strong uppercase">{eyebrow}</p> : null}
+          {eyebrow ? (
+            <p className="text-sm font-semibold tracking-[0.14em] text-accent-strong uppercase">
+              {eyebrow}
+            </p>
+          ) : null}
           <h2 id={`${id}-title`} className="text-display-md font-semibold">
             {title}
           </h2>

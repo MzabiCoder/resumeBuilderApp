@@ -17,7 +17,9 @@ export function createHeroTimeline(root: HTMLElement, gsap: Gsap) {
   const scores = q('[data-anim="score"]');
   const badges = q('[data-anim="badge"]');
   const originals = new Map(typers.map((el) => [el, el.textContent ?? ""]));
-  const finalScores = new Map(scores.map((el) => [el, Number(el.dataset.value ?? el.textContent ?? 0)]));
+  const finalScores = new Map(
+    scores.map((el) => [el, Number(el.dataset.value ?? el.textContent ?? 0)]),
+  );
 
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
   if (sections.length) {
@@ -48,11 +50,21 @@ export function createHeroTimeline(root: HTMLElement, gsap: Gsap) {
     const state = { v: 0 };
     tl.to(
       state,
-      { v: target, duration: 1.4, ease: "power2.out", onUpdate: () => void (el.textContent = String(Math.round(state.v))) },
+      {
+        v: target,
+        duration: 1.4,
+        ease: "power2.out",
+        onUpdate: () => void (el.textContent = String(Math.round(state.v))),
+      },
       0.5,
     );
   });
-  if (badges.length) tl.from(badges, { autoAlpha: 0, scale: 0.85, y: 8, duration: 0.45, stagger: 0.12, ease: "back.out(2)" }, 0.9);
+  if (badges.length)
+    tl.from(
+      badges,
+      { autoAlpha: 0, scale: 0.85, y: 8, duration: 0.45, stagger: 0.12, ease: "back.out(2)" },
+      0.9,
+    );
 
   const cleanup = () => {
     tl.kill();
@@ -61,5 +73,14 @@ export function createHeroTimeline(root: HTMLElement, gsap: Gsap) {
     gsap.set([...sections, ...badges], { clearProps: "all" });
   };
 
-  return { timeline: tl, targets: { sections: sections.length, typers: typers.length, scores: scores.length, badges: badges.length }, cleanup };
+  return {
+    timeline: tl,
+    targets: {
+      sections: sections.length,
+      typers: typers.length,
+      scores: scores.length,
+      badges: badges.length,
+    },
+    cleanup,
+  };
 }

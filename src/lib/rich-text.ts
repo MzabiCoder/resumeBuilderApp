@@ -9,8 +9,10 @@ export function tokenize(input: string): RichToken[] {
     .split(pattern)
     .filter((part) => part.length > 0)
     .map((part): RichToken => {
-      if (part.startsWith("**") && part.endsWith("**") && part.length > 4) return { type: "strong", value: part.slice(2, -2) };
-      if (part.startsWith("*") && part.endsWith("*") && part.length > 2) return { type: "em", value: part.slice(1, -1) };
+      if (part.startsWith("**") && part.endsWith("**") && part.length > 4)
+        return { type: "strong", value: part.slice(2, -2) };
+      if (part.startsWith("*") && part.endsWith("*") && part.length > 2)
+        return { type: "em", value: part.slice(1, -1) };
       return { type: "text", value: part };
     });
 }

@@ -6,6 +6,20 @@ import type { TrustEntry } from "./schema";
  * Employer names render as plain text only — never logos.
  */
 export const trustEntries: TrustEntry[] = [
-  { id: "placeholder-users", kind: "stat", value: "PLACEHOLDER", label: "resumes created", source: "PLACEHOLDER — analytics export", verified: false },
-  { id: "placeholder-employer", kind: "employer", value: "PLACEHOLDER", label: "Employer where users were hired", source: "PLACEHOLDER — consented user survey", verified: false },
+  {
+    id: "placeholder-users",
+    kind: "stat",
+    value: "PLACEHOLDER",
+    label: "resumes created",
+    source: "PLACEHOLDER — analytics export",
+    verified: false,
+  },
+  {
+    id: "placeholder-employer",
+    kind: "employer",
+    value: "PLACEHOLDER",
+    label: "Employer where users were hired",
+    source: "PLACEHOLDER — consented user survey",
+    verified: false,
+  },
 ];

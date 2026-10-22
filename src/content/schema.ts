@@ -12,9 +12,28 @@ const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "lowercase-hyphenate
 const href = z.string().startsWith("/");
 
 export const iconKey = z.enum([
-  "briefcase", "settings", "compass", "sprout", "heart-handshake", "hard-hat", "graduation-cap",
-  "calculator", "utensils", "sparkles", "file-up", "layout-template", "wand", "download",
-  "credit-card", "badge-check", "target", "list-checks", "pen-line", "search-check", "shield-check", "file-text",
+  "briefcase",
+  "settings",
+  "compass",
+  "sprout",
+  "heart-handshake",
+  "hard-hat",
+  "graduation-cap",
+  "calculator",
+  "utensils",
+  "sparkles",
+  "file-up",
+  "layout-template",
+  "wand",
+  "download",
+  "credit-card",
+  "badge-check",
+  "target",
+  "list-checks",
+  "pen-line",
+  "search-check",
+  "shield-check",
+  "file-text",
 ]);
 export type IconKey = z.infer<typeof iconKey>;
 
@@ -44,7 +63,14 @@ export const sampleResume = z.object({
   title: z.string(),
   contact: z.array(z.string()),
   summary: z.string(),
-  experience: z.array(z.object({ role: z.string(), org: z.string(), dates: z.string(), bullets: z.array(z.string()) })),
+  experience: z.array(
+    z.object({
+      role: z.string(),
+      org: z.string(),
+      dates: z.string(),
+      bullets: z.array(z.string()),
+    }),
+  ),
   skills: z.array(z.string()),
   strength: z.object({ label: z.string(), value: z.number().min(0).max(100) }),
   badges: z.array(z.string()),

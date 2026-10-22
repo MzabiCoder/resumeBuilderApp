@@ -49,7 +49,12 @@ export function howToJsonLd(input: {
     "@type": "HowTo",
     name: input.name,
     ...(input.totalTime ? { totalTime: input.totalTime } : {}),
-    step: input.steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.title, text: s.body })),
+    step: input.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.body,
+    })),
   };
 }
 

@@ -17,9 +17,21 @@ export interface DisclosureProps {
  * and the answer text is always in the server HTML (good for SEO / FAQPage).
  * Use `ui/Accordion` (Radix) only when you need controlled state.
  */
-export function Disclosure({ summary, children, group, id, defaultOpen, className }: DisclosureProps) {
+export function Disclosure({
+  summary,
+  children,
+  group,
+  id,
+  defaultOpen,
+  className,
+}: DisclosureProps) {
   return (
-    <details id={id} name={group} open={defaultOpen} className={cn("group border-b border-border", className)}>
+    <details
+      id={id}
+      name={group}
+      open={defaultOpen}
+      className={cn("group border-b border-border", className)}
+    >
       <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-6 py-5 text-left text-lg font-semibold text-ink hover:text-primary [&::-webkit-details-marker]:hidden">
         <span>{summary}</span>
         <ChevronDown
@@ -27,7 +39,9 @@ export function Disclosure({ summary, children, group, id, defaultOpen, classNam
           className="size-5 shrink-0 transition-transform duration-(--duration-base) group-open:rotate-180"
         />
       </summary>
-      <div className="flex max-w-prose flex-col gap-3 pb-6 leading-relaxed text-ink-muted">{children}</div>
+      <div className="flex max-w-prose flex-col gap-3 pb-6 leading-relaxed text-ink-muted">
+        {children}
+      </div>
     </details>
   );
 }

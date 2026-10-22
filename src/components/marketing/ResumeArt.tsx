@@ -29,11 +29,15 @@ export function ResumeArt({ resume, className }: ResumeArtProps) {
           <p className="mt-1.5 text-[#4a5068]">{resume.contact.join("  ·  ")}</p>
         </header>
         <section data-anim="resume-section" className="mt-[5%]">
-          <p className="mb-1 text-[0.9em] font-bold tracking-[0.12em] text-[#2f3bc9] uppercase">Summary</p>
+          <p className="mb-1 text-[0.9em] font-bold tracking-[0.12em] text-[#2f3bc9] uppercase">
+            Summary
+          </p>
           <p data-anim="type">{resume.summary}</p>
         </section>
         <section data-anim="resume-section" className="mt-[5%]">
-          <p className="mb-1 text-[0.9em] font-bold tracking-[0.12em] text-[#2f3bc9] uppercase">Experience</p>
+          <p className="mb-1 text-[0.9em] font-bold tracking-[0.12em] text-[#2f3bc9] uppercase">
+            Experience
+          </p>
           {resume.experience.map((job) => (
             <div key={job.role + job.org} className="mb-[3%]">
               <p className="flex justify-between gap-2 font-semibold">
@@ -51,7 +55,9 @@ export function ResumeArt({ resume, className }: ResumeArtProps) {
           ))}
         </section>
         <section data-anim="resume-section" className="mt-[4%]">
-          <p className="mb-1 text-[0.9em] font-bold tracking-[0.12em] text-[#2f3bc9] uppercase">Skills</p>
+          <p className="mb-1 text-[0.9em] font-bold tracking-[0.12em] text-[#2f3bc9] uppercase">
+            Skills
+          </p>
           <p className="flex flex-wrap gap-1">
             {resume.skills.map((s) => (
               <span key={s} className="rounded bg-[#e8eafd] px-1.5 py-0.5">
@@ -65,7 +71,11 @@ export function ResumeArt({ resume, className }: ResumeArtProps) {
         data-anim="badge"
         className="absolute -bottom-5 -left-4 flex items-center gap-3 rounded-lg bg-surface-raised px-4 py-3 shadow-lg sm:-left-10"
       >
-        <span className="font-display text-3xl font-semibold text-success tabular-nums" data-anim="score" data-value={resume.strength.value}>
+        <span
+          className="font-display text-3xl font-semibold text-success tabular-nums"
+          data-anim="score"
+          data-value={resume.strength.value}
+        >
           {resume.strength.value}
         </span>
         <span className="text-sm leading-tight font-semibold text-ink">
@@ -75,7 +85,11 @@ export function ResumeArt({ resume, className }: ResumeArtProps) {
       </div>
       <ul className="absolute -top-4 -right-3 flex flex-col items-end gap-2 sm:-right-8">
         {resume.badges.map((b) => (
-          <li key={b} data-anim="badge" className="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-ink-inverse shadow-md">
+          <li
+            key={b}
+            data-anim="badge"
+            className="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-ink-inverse shadow-md"
+          >
             ✓ {b}
           </li>
         ))}

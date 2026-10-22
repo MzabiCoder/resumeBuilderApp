@@ -47,9 +47,21 @@ export const hero = {
 export const freePromise = {
   title: "Free means free.",
   items: [
-    { title: "100% free to build", body: "Every template, every section and the AI writer — no trial, no tiers.", icon: "wand" },
-    { title: "100% free to download", body: "PDF and Word downloads, as many times as you like.", icon: "download" },
-    { title: "No credit card, no watermark", body: "Nothing to cancel. Your resume carries your name, not ours.", icon: "credit-card" },
+    {
+      title: "100% free to build",
+      body: "Every template, every section and the AI writer — no trial, no tiers.",
+      icon: "wand",
+    },
+    {
+      title: "100% free to download",
+      body: "PDF and Word downloads, as many times as you like.",
+      icon: "download",
+    },
+    {
+      title: "No credit card, no watermark",
+      body: "Nothing to cancel. Your resume carries your name, not ours.",
+      icon: "credit-card",
+    },
   ],
 } satisfies { title: string; items: FeatureItem[] };
 
@@ -59,9 +71,21 @@ export const howItWorks = {
   intro: "Most people finish in 10–15 minutes.",
   totalTime: "PT15M",
   steps: [
-    { title: "Pick a template", body: "Choose from ATS-friendly, modern, professional and creative designs. Switch any time without losing content.", icon: "layout-template" },
-    { title: "Let AI write it — or write it yourself", body: "Get a full first draft in under a minute, or use AI one bullet at a time. You approve every change.", icon: "wand" },
-    { title: "Download and apply", body: "Run the ATS check, then download a PDF or Word file. No sign-up required.", icon: "download" },
+    {
+      title: "Pick a template",
+      body: "Choose from ATS-friendly, modern, professional and creative designs. Switch any time without losing content.",
+      icon: "layout-template",
+    },
+    {
+      title: "Let AI write it — or write it yourself",
+      body: "Get a full first draft in under a minute, or use AI one bullet at a time. You approve every change.",
+      icon: "wand",
+    },
+    {
+      title: "Download and apply",
+      body: "Run the ATS check, then download a PDF or Word file. No sign-up required.",
+      icon: "download",
+    },
   ],
 } satisfies SectionHeader & { totalTime: string; steps: FeatureItem[] };
 
@@ -91,12 +115,15 @@ export const buildPaths = {
 export const aiDemo = {
   eyebrow: "The AI writer",
   title: "From “responsible for” to results",
-  intro: "Scroll to watch a vague bullet become a specific, action-led one. You stay in control: every suggestion is a draft you accept or reject.",
+  intro:
+    "Scroll to watch a vague bullet become a specific, action-led one. You stay in control: every suggestion is a draft you accept or reject.",
   beforeLabel: "Before",
   afterLabel: "After AI",
   before: "Responsible for managing the warehouse team and helping with shipping problems.",
-  after: "Led an 18-person warehouse team, cutting shipping errors by [X%] and order-to-ship time by [X days].",
-  placeholderNote: "Numbers in [brackets] are placeholders — the AI never invents your metrics. You fill them in.",
+  after:
+    "Led an 18-person warehouse team, cutting shipping errors by [X%] and order-to-ship time by [X days].",
+  placeholderNote:
+    "Numbers in [brackets] are placeholders — the AI never invents your metrics. You fill them in.",
   scoreLabel: "Bullet strength",
   scoreFrom: 34,
   scoreTo: 91,
@@ -107,7 +134,11 @@ export const coverLetterPromo = {
   eyebrow: "Cover letters",
   title: "A cover letter that sounds like you — in minutes",
   body: "Paste the job post, pick a tone, and pull details straight from your resume. The AI writes a tailored hook, body and close; you fine-tune any paragraph with one click.",
-  points: ["Matches your resume’s design", "Professional, enthusiastic or concise tone", "Free PDF & Word download"],
+  points: [
+    "Matches your resume’s design",
+    "Professional, enthusiastic or concise tone",
+    "Free PDF & Word download",
+  ],
   primaryCta: { label: "Write My Cover Letter", href: "/cover-letter/start" },
   secondaryCta: { label: "See cover letter samples", href: "/cover-letter/samples" },
   letter: {
@@ -123,8 +154,16 @@ export const coverLetterPromo = {
 };
 
 export const sectionTitles = {
-  categories: { eyebrow: "Resume samples", title: "Find a sample for your field", intro: "Written for each career area and level — entry, mid and senior." },
-  templates: { eyebrow: "Templates", title: "Designs recruiters and ATS both like", intro: "Real, selectable text and standard headings in every template." },
+  categories: {
+    eyebrow: "Resume samples",
+    title: "Find a sample for your field",
+    intro: "Written for each career area and level — entry, mid and senior.",
+  },
+  templates: {
+    eyebrow: "Templates",
+    title: "Designs recruiters and ATS both like",
+    intro: "Real, selectable text and standard headings in every template.",
+  },
   testimonials: { eyebrow: "Reviews", title: "What job seekers say" },
   tips: { eyebrow: "Resume tips", title: "Small changes that get more callbacks" },
   faq: { eyebrow: "FAQ", title: "Questions, answered" },

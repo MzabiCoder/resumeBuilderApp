@@ -12,7 +12,10 @@ export interface TemplateCardProps {
 /** One gallery item. `data-tags` is the hook TemplateFilter uses to show/hide it. */
 export function TemplateCard({ template, href, tagLabels }: TemplateCardProps) {
   return (
-    <li data-tags={template.tags.join(" ")} className="group relative flex w-[15rem] shrink-0 snap-start flex-col gap-4 sm:w-auto">
+    <li
+      data-tags={template.tags.join(" ")}
+      className="group relative flex w-[15rem] shrink-0 snap-start flex-col gap-4 sm:w-auto"
+    >
       <div className="rounded-lg bg-surface-sunken p-5 transition-transform duration-(--duration-base) ease-out group-hover:-translate-y-1">
         <TemplateThumbnail layout={template.layout} accent={template.accent} />
       </div>

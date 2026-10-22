@@ -18,6 +18,19 @@ Next.js 16 (App Router, Cache Components, Turbopack) · React 19 · TypeScript s
 ## Structure
 See `src/` folders: `components/{ui,layout,seo}`, `config/` (brand, nav, routes, headers), `lib/`, `styles/`. The design system is documented in `design-system.md`.
 
+## Content
+All marketing copy lives in `src/content/*` and is typed against Zod schemas in `src/content/schema.ts`. `npm test` validates every file, so a broken copy edit fails CI. Rich text supports `**bold**` and `*italic*` only. Motion-section editing rules are in `SHOWPIECES.md`.
+
+### Image slots (swap in custom art without touching components)
+| Slot | Where | Current |
+|---|---|---|
+| Hero visual | `hero.visual` / `hero.resume` in `content/home.ts` | Live-rendered sample resume (`ResumeArt`): real text, no image request |
+| Template previews | `templates[].preview` in `content/templates.ts` | Schematic `TemplateThumbnail`; replaced by `scripts/export-template-previews` AVIF/WebP output in Phase 3 |
+| Cover letter visual | `coverLetterPromo.letter` in `content/home.ts` | Live-rendered sample letter (`LetterArt`) |
+| Logo | `siteConfig.logo` + `public/brand/` | Placeholder SVG wordmark |
+
+Illustrations: none yet. Lucide icons are used via `components/marketing/icon-map.ts`; an unDraw set recoloured to the palette can be added as inline SVG components.
+
 ## Pre-launch checklist
 - [ ] Final brand name, domain (`NEXT_PUBLIC_SITE_URL`) and logo in `src/config/site.ts` + `public/brand/`
 - [ ] Real social URLs in `siteConfig.social`

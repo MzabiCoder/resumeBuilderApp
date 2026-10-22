@@ -6,7 +6,31 @@ import type { Testimonial } from "./schema";
  * fake reviews applies. No Review/AggregateRating JSON-LD is emitted for these.
  */
 export const testimonials: Testimonial[] = [
-  { id: "placeholder-1", quote: "PLACEHOLDER testimonial text.", name: "PLACEHOLDER", role: "PLACEHOLDER", rating: 5, consentRef: "PLACEHOLDER", verified: false },
-  { id: "placeholder-2", quote: "PLACEHOLDER testimonial text.", name: "PLACEHOLDER", role: "PLACEHOLDER", rating: 5, consentRef: "PLACEHOLDER", verified: false },
-  { id: "placeholder-3", quote: "PLACEHOLDER testimonial text.", name: "PLACEHOLDER", role: "PLACEHOLDER", rating: 5, consentRef: "PLACEHOLDER", verified: false },
+  {
+    id: "placeholder-1",
+    quote: "PLACEHOLDER testimonial text.",
+    name: "PLACEHOLDER",
+    role: "PLACEHOLDER",
+    rating: 5,
+    consentRef: "PLACEHOLDER",
+    verified: false,
+  },
+  {
+    id: "placeholder-2",
+    quote: "PLACEHOLDER testimonial text.",
+    name: "PLACEHOLDER",
+    role: "PLACEHOLDER",
+    rating: 5,
+    consentRef: "PLACEHOLDER",
+    verified: false,
+  },
+  {
+    id: "placeholder-3",
+    quote: "PLACEHOLDER testimonial text.",
+    name: "PLACEHOLDER",
+    role: "PLACEHOLDER",
+    rating: 5,
+    consentRef: "PLACEHOLDER",
+    verified: false,
+  },
 ];

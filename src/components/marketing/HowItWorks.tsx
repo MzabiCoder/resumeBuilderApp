@@ -17,10 +17,16 @@ export function HowItWorks({ eyebrow, title, intro, steps, totalTime }: HowItWor
       <JsonLd data={howToJsonLd({ name: title, totalTime, steps })} />
       <ol className="grid gap-6 md:grid-cols-3">
         {steps.map((step, i) => (
-          <li key={step.title} className="relative flex flex-col gap-4 rounded-xl border border-border bg-surface p-7">
+          <li
+            key={step.title}
+            className="relative flex flex-col gap-4 rounded-xl border border-border bg-surface p-7"
+          >
             <div className="flex items-center justify-between">
               <FeatureIcon icon={step.icon} />
-              <span aria-hidden="true" className="font-display text-6xl leading-none font-semibold text-primary/15">
+              <span
+                aria-hidden="true"
+                className="font-display text-6xl leading-none font-semibold text-accent"
+              >
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>

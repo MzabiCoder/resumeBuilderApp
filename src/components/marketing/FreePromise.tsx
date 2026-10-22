@@ -10,7 +10,11 @@ export interface FreePromiseProps {
 /** #free-promise — the core promise on an inverse band. */
 export function FreePromise({ title, items }: FreePromiseProps) {
   return (
-    <section id="free-promise" aria-labelledby="free-promise-title" className="bg-surface-inverse py-14 text-ink-inverse sm:py-16">
+    <section
+      id="free-promise"
+      aria-labelledby="free-promise-title"
+      className="bg-surface-inverse py-14 text-ink-inverse sm:py-16"
+    >
       <Container size="wide" className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
         <h2 id="free-promise-title" className="shrink-0 text-display-md font-semibold lg:w-64">
           {title}

@@ -15,15 +15,29 @@ export interface CoverLetterPromoProps {
 }
 
 /** #cover-letters */
-export function CoverLetterPromo({ eyebrow, title, body, points, primaryCta, secondaryCta, letter }: CoverLetterPromoProps) {
+export function CoverLetterPromo({
+  eyebrow,
+  title,
+  body,
+  points,
+  primaryCta,
+  secondaryCta,
+  letter,
+}: CoverLetterPromoProps) {
   return (
-    <section id="cover-letters" aria-labelledby="cover-letters-title" className="overflow-hidden bg-primary-soft py-16 sm:py-24">
+    <section
+      id="cover-letters"
+      aria-labelledby="cover-letters-title"
+      className="overflow-hidden bg-primary-soft py-16 sm:py-24"
+    >
       <Container size="wide" className="grid items-center gap-14 lg:grid-cols-2">
         <div className="order-2 mx-auto w-full max-w-md lg:order-1 lg:-rotate-2">
           <LetterArt letter={letter} />
         </div>
         <div className="order-1 flex flex-col items-start gap-6 lg:order-2">
-          <p className="text-sm font-semibold tracking-[0.14em] text-primary uppercase">{eyebrow}</p>
+          <p className="text-sm font-semibold tracking-[0.14em] text-primary uppercase">
+            {eyebrow}
+          </p>
           <h2 id="cover-letters-title" className="text-display-md font-semibold">
             {title}
           </h2>
