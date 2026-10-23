@@ -21,7 +21,9 @@ export function ComingSoon({
 }: ComingSoonProps) {
   return (
     <Container size="prose" className="flex flex-col gap-5 py-16 sm:py-24">
-      <p className="text-sm font-semibold tracking-[0.14em] text-accent-strong uppercase">Coming soon</p>
+      <p className="text-sm font-semibold tracking-[0.14em] text-accent-strong uppercase">
+        Coming soon
+      </p>
       <h1 className="text-display-md font-semibold">{title}</h1>
       <div className="flex flex-col gap-3 text-lead text-ink-muted">{children}</div>
       <div className="flex flex-wrap gap-3 pt-2">
