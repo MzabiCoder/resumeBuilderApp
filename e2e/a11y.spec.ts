@@ -2,10 +2,20 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 /** Every route that exists. Phases append here; CI fails on ANY axe violation. */
-const routes = ["/", "/resume/start", "/this-page-does-not-exist"];
+const routes = [
+  "/",
+  "/resume/start",
+  "/sign-in",
+  "/sign-up",
+  "/resume/upload",
+  "/this-page-does-not-exist",
+];
 
 for (const route of routes) {
   test(`axe: ${route} has no WCAG 2.2 AA violations`, async ({ page }) => {
+    // Audit the resting state. Showpieces are SSR'd in their final state and only animate
+    // opacity from it; under load axe could otherwise sample a mid-fade frame (flaky contrast).
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(route);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])

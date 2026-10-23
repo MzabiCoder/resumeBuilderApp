@@ -14,6 +14,8 @@ export const privateRoutePrefixes = [
   "/share",
   "/api",
   "/template-preview",
+  "/sign-in",
+  "/sign-up",
 ] as const;
 
 /** Static, indexable routes that exist today. Content routes are appended as phases land. */
