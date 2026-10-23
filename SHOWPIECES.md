@@ -2,10 +2,10 @@
 
 Two sections get custom motion. Everything else on the site is built from the standard `ui/` + `marketing/` components and has no motion JS.
 
-| Showpiece | Why |
-|---|---|
-| **Hero — a resume assembling itself** | First impression, and it shows the product itself: real resume text types in, sections slide into place, and the strength score ticks up. |
-| **AI writer demo** (`#ai-writer`) | Makes the core AI value concrete: as you scroll, a vague bullet dims and is struck through while a specific, quantified one lights up word by word, with `[X%]` placeholders marked. |
+| Showpiece                             | Why                                                                                                                                                                                  |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Hero — a resume assembling itself** | First impression, and it shows the product itself: real resume text types in, sections slide into place, and the strength score ticks up.                                            |
+| **AI writer demo** (`#ai-writer`)     | Makes the core AI value concrete: as you scroll, a vague bullet dims and is struck through while a specific, quantified one lights up word by word, with `[X%]` placeholders marked. |
 
 The category explorer was skipped to protect the JS budget.
 
@@ -26,27 +26,27 @@ Why `import()` inside the hook instead of `next/dynamic`: the behaviour has no U
 
 ## Hero — `src/components/showpieces/hero/`
 
-| Hook | Effect |
-|---|---|
-| `#hero[data-showpiece="hero"]` | Root / observer target (`rootMargin: 0px`) |
-| `[data-anim="resume-section"]` | Fades out briefly, then slides and fades back in, staggered |
-| `[data-anim="type"]` | Its *current* text is re-typed character by character |
-| `[data-anim="score"][data-value]` | Counts 0 → `data-value` |
-| `[data-anim="badge"]` | Pops in |
+| Hook                                       | Effect                                                                    |
+| ------------------------------------------ | ------------------------------------------------------------------------- |
+| `#hero[data-showpiece="hero"]`             | Root / observer target (`rootMargin: 0px`)                                |
+| `[data-anim="resume-section"]`             | Fades out briefly, then slides and fades back in, staggered               |
+| `[data-anim="type"]`                       | Its _current_ text is re-typed character by character                     |
+| `[data-anim="score"][data-value]`          | Counts 0 → `data-value`                                                   |
+| `[data-anim="badge"]`                      | Pops in                                                                   |
 | `.hero-headline`, `[data-anim="hero-cta"]` | Deliberately **not** animated: the h1 is the LCP element and stays static |
 
 Bundle: GSAP core, **~26 KB gzipped**, loaded only once the hero is visible. The timeline code itself is under 1 KB.
 
 ## AI writer demo — `src/components/showpieces/ai-demo/`
 
-| Hook | Effect |
-|---|---|
-| `#ai-writer[data-showpiece="ai-demo"]` | Root / observer target (`rootMargin: 200px`) |
-| `[data-anim="ai-stage"]` | ScrollTrigger range (`top 75%` → `bottom 45%`, scrub 0.6) |
-| `[data-anim="ai-before"]` | Strike-through colour fades in; words dim |
-| `[data-anim="ai-after"]` | Words split by `splitWords()` (nested `<mark>` preserved) and lit in sequence |
-| `[data-anim="ai-score"][data-from][data-to]` | Counts from → to |
-| `[data-anim="ai-meter"][data-from][data-to]` | Bar `scaleX` from → to |
+| Hook                                         | Effect                                                                        |
+| -------------------------------------------- | ----------------------------------------------------------------------------- |
+| `#ai-writer[data-showpiece="ai-demo"]`       | Root / observer target (`rootMargin: 200px`)                                  |
+| `[data-anim="ai-stage"]`                     | ScrollTrigger range (`top 75%` → `bottom 45%`, scrub 0.6)                     |
+| `[data-anim="ai-before"]`                    | Strike-through colour fades in; words dim                                     |
+| `[data-anim="ai-after"]`                     | Words split by `splitWords()` (nested `<mark>` preserved) and lit in sequence |
+| `[data-anim="ai-score"][data-from][data-to]` | Counts from → to                                                              |
+| `[data-anim="ai-meter"][data-from][data-to]` | Bar `scaleX` from → to                                                        |
 
 Bundle: shares GSAP core with the hero, plus **~17 KB gzipped** for ScrollTrigger and the timeline, loaded only when the section is within 200px of the viewport.
 

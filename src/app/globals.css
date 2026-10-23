@@ -109,3 +109,26 @@
     color: var(--ink);
   }
 }
+
+/* ---------------------------------------------------------------- Print / PDF
+   Resume export: components/builder/print.tsx renders #resume-print-root into
+   <body> on beforeprint. Everything else is removed from the printed output. */
+@media print {
+  @page {
+    size: letter;
+    margin: 0;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  body:has(#resume-print-root) > :not(#resume-print-root) {
+    display: none !important;
+  }
+  #resume-print-root .resume-paper {
+    min-height: auto;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

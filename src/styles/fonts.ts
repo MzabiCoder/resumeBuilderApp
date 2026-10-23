@@ -12,8 +12,14 @@ export const fontDisplay = Fraunces({
   axes: ["opsz"],
 });
 
+/**
+ * Body font uses `optional`: it is preloaded so it is normally ready inside the
+ * ~100 ms block period, and on slow first visits the metric-adjusted fallback is
+ * kept instead of swapping — a late swap re-wraps hero copy and shifted the
+ * resume art (measured CLS 0.07 under DevTools throttling; budget 0.05).
+ */
 export const fontBody = Inter({
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
   variable: "--font-inter",
 });

@@ -13,9 +13,11 @@ export const privateRoutePrefixes = [
   "/privacy-center",
   "/share",
   "/api",
+  "/template-preview",
 ] as const;
 
 /** Static, indexable routes that exist today. Content routes are appended as phases land. */
 export const staticIndexableRoutes: ReadonlyArray<{ path: string; priority: number }> = [
   { path: "/", priority: 1 },
+  { path: "/resume/start", priority: 0.9 },
 ];

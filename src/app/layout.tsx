@@ -3,8 +3,6 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { fontBody, fontDisplay } from "@/styles/fonts";
 import { SkipLink } from "@/components/ui/SkipLink";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/structured-data";
 
@@ -34,12 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-dvh flex-col">
         <SkipLink />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
-        <SiteHeader />
-        <main id="main" tabIndex={-1} className="flex-1 focus-visible:outline-none">
-          {children}
-        </main>
-        <SiteFooter />
-        {/* <Toaster /> is mounted by app layouts (builder, dashboard) — not on marketing pages. */}
+        {/* Chrome lives in route-group layouts: (marketing) → MarketingShell, (builder) → BuilderShell.
+            <Toaster /> is mounted by app layouts only. Every layout must render <main id="main">. */}
+        {children}
       </body>
     </html>
   );

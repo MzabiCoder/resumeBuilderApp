@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 /** Every route that exists. Phases append here; CI fails on ANY axe violation. */
-const routes = ["/", "/this-page-does-not-exist"];
+const routes = ["/", "/resume/start", "/this-page-does-not-exist"];
 
 for (const route of routes) {
   test(`axe: ${route} has no WCAG 2.2 AA violations`, async ({ page }) => {

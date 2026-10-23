@@ -33,7 +33,8 @@ export function Toaster({ closeLabel = "Dismiss notification" }: ToasterProps) {
           <T.Root
             key={t.id}
             type={t.tone === "error" ? "foreground" : "background"}
-            duration={t.tone === "error" ? Infinity : undefined}
+            // Errors persist; toasts with an action get longer (Radix also pauses on hover/focus, F8 focuses).
+            duration={t.tone === "error" ? Infinity : t.action ? 10000 : undefined}
             onOpenChange={(open) => !open && dismiss(t.id)}
             className={cn(
               "flex items-start gap-3 rounded-lg border-l-4 bg-surface-raised p-4 text-ink shadow-lg",
@@ -47,6 +48,15 @@ export function Toaster({ closeLabel = "Dismiss notification" }: ToasterProps) {
                 <T.Description className="text-sm text-ink-muted">{t.description}</T.Description>
               ) : null}
             </div>
+            {t.action ? (
+              <T.Action
+                altText={t.action.altText}
+                onClick={t.action.onClick}
+                className="-my-1 inline-flex min-h-10 items-center rounded-full px-3 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                {t.action.label}
+              </T.Action>
+            ) : null}
             <T.Close
               aria-label={closeLabel}
               className="-m-2 grid size-10 place-items-center rounded-full hover:bg-surface-sunken"

@@ -25,7 +25,34 @@ afterEach(() => {
   trigger = undefined;
 });
 
+function DeferredProbe({ load }: { load: () => Promise<ShowpieceModule> }) {
+  useShowpiece("target", load, { defer: "idle" });
+  return <section id="target">Content</section>;
+}
+
 describe("useShowpiece", () => {
+  it('with defer: "idle", observes only after load + idle and cancels on unmount', async () => {
+    const observe = vi.fn();
+    class DeferIO extends IO {
+      override observe = observe;
+    }
+    vi.stubGlobal("IntersectionObserver", DeferIO);
+    let idle: IdleRequestCallback | undefined;
+    const cancel = vi.fn();
+    vi.stubGlobal("requestIdleCallback", (cb: IdleRequestCallback) => ((idle = cb), 7));
+    vi.stubGlobal("cancelIdleCallback", cancel);
+    const load = vi.fn(async () => ({ init: () => () => {} }));
+
+    const { unmount } = render(<DeferredProbe load={load} />);
+    expect(observe).not.toHaveBeenCalled();
+    idle?.({ didTimeout: false, timeRemaining: () => 10 });
+    expect(observe).toHaveBeenCalledOnce();
+    trigger?.();
+    await waitFor(() => expect(load).toHaveBeenCalledOnce());
+    unmount();
+    expect(cancel).toHaveBeenCalledWith(7);
+  });
+
   it("loads only when the section nears the viewport and cleans up on unmount", async () => {
     vi.stubGlobal("IntersectionObserver", IO);
     const cleanup = vi.fn();

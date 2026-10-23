@@ -10,7 +10,7 @@ export const templateFilters: Array<{ value: TemplateStyle | "all"; label: strin
 ];
 
 const previewNote =
-  "Image slot: replaced by scripts/export-template-previews output (AVIF/WebP) in Phase 3.";
+  "Image slot: `src` is a base path; scripts/export-template-previews.mts writes <src>.avif + <src>.webp (640×828).";
 
 /** Gallery metadata. The template components themselves arrive in Phase 3 (`resume-templates/`). */
 export const templates: TemplateMeta[] = [
@@ -21,7 +21,7 @@ export const templates: TemplateMeta[] = [
     tags: ["ats", "simple"],
     layout: "single",
     accent: "#2f3bc9",
-    preview: { alt: "Clarity template preview", note: previewNote },
+    preview: { src: "/templates/clarity", alt: "Clarity template preview", note: previewNote },
   },
   {
     id: "ledger",
@@ -30,7 +30,7 @@ export const templates: TemplateMeta[] = [
     tags: ["ats", "professional"],
     layout: "single",
     accent: "#141726",
-    preview: { alt: "Ledger template preview", note: previewNote },
+    preview: { src: "/templates/ledger", alt: "Ledger template preview", note: previewNote },
   },
   {
     id: "baseline",
@@ -39,7 +39,7 @@ export const templates: TemplateMeta[] = [
     tags: ["ats", "simple"],
     layout: "single",
     accent: "#1c7346",
-    preview: { alt: "Baseline template preview", note: previewNote },
+    preview: { src: "/templates/baseline", alt: "Baseline template preview", note: previewNote },
   },
   {
     id: "meridian",
